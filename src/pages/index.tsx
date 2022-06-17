@@ -1,6 +1,8 @@
 import Head from 'next/head'
 import { useEffect, useState } from 'react'
 import api from './api'
+import {PokeTable} from '../components/PokeTable/index'
+import { Flex } from '@chakra-ui/react'
 
 const Home = () => {
 
@@ -21,6 +23,12 @@ const Home = () => {
         <meta name="description" content="" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
+      <Flex bg='darkgray' justifyContent='center'>
+        <PokeTable />
+        <PokeTable />
+      </Flex>
+      
     </div>
   )
 }
