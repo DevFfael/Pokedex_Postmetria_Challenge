@@ -22,7 +22,6 @@ export function PokeList(){
   const removePokemon = (name: string) => {
     removedPokemons.push(name);
     localStorage.setItem("removedPokemons", JSON.stringify(removedPokemons));
-    setRemovedPokemons(pokemons);
   }
 
   useEffect(() => {fetchPokemon()}, [removePokemon])
@@ -33,7 +32,7 @@ export function PokeList(){
         pokemons.map((pokemon) => {
         return(
           !removedPokemons.some(removedPokemon => removedPokemon === pokemon.name) &&
-          <PokeCard pokemon={pokemon} deleteItem = {e => removePokemon(e)}/>
+          <PokeCard pokemon={pokemon} deleteItem = {(e:any) => removePokemon(e)}/>
         )})
       }
     </>
