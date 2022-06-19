@@ -3,6 +3,7 @@ import { transform } from "framer-motion";
 import { DeleteIcon } from '@chakra-ui/icons'
 import React, { useEffect, useState } from "react";
 import api from '../../pages/api'
+import { pokemonType } from "../../types/pokemonType";
 
 interface PokeCardProps{
   abilities: Array<any>,
@@ -14,21 +15,11 @@ interface PokeCardProps{
 }
 
 interface PokemonProps{
-  pokemon: {
-    url: string
-  }
+  pokemon: pokemonType,
+  deleteItem: (name: string | null) => void
 }
 
-function DeleteItem(name: string){
-  let pokemons = JSON.parse(localStorage.getItem("removedPokemons") as string);
-  pokemons.push(name);
-  
-  localStorage.setItem("removedPokemons", JSON.stringify(pokemons));
-
-  console.log(name)
-}
-
-export function PokeCard({pokemon} : PokemonProps){
+export function PokeCard({pokemon,deleteItem} : PokemonProps){
   
   const { isOpen, onOpen, onClose } = useDisclosure()
 
@@ -58,7 +49,7 @@ export function PokeCard({pokemon} : PokemonProps){
     _hover={{ boxShadow:'2xl', transform:'translateY(-5px)' }}
     >
       
-      <Button onClick={() => DeleteItem(pokemonsInfo.name)} position='absolute' top='25px' right='25px' bg='none' p='0' m='0' transition='transform 200ms ease-in-out, box-shadow 200ms ease-in-out' zIndex='3' _hover={{transform:'scale(1.3)'}}>        
+      <Button onClick={() => deleteItem(pokemonsInfo.name)} position='absolute' top='25px' right='25px' bg='none' p='0' m='0' transition='transform 200ms ease-in-out, box-shadow 200ms ease-in-out' zIndex='3' _hover={{transform:'scale(1.3)'}}>        
           <DeleteIcon w='20px' h='20px' color='white'/>
       </Button>
 
