@@ -1,6 +1,8 @@
 # PostMetria Challenge
 Desafio proposto pela empresa PostMetria para FrontEnd envolvendo ReactJS e consumo de uma API Pública.
 
+Utilizando a API `https://pokeapi.co` foi feito o layout de um pokedex. Separado por card, é possível visualizar cada pokemon e suas habilidades separadamente.
+
 
 ## Project setup
 ```
